@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AgileWebApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221031110053_v2")]
-    partial class v2
+    [Migration("20221031131914_v1")]
+    partial class v1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

@@ -62,20 +62,16 @@ namespace AgileWebApi.Data
             var testelevator = new Faker<Elevator>()
                     .StrictMode(false)
                     .RuleFor(e => e.Id, f => f.IndexFaker)
-                    .RuleFor(e => e.Name, (f, u) => f.Company + "Elevator")
-                    .RuleFor(e => e.Address, (f, u) => f.Address.Locale)
+                    .RuleFor(e => e.Name, (f, u) => f.Company.CompanyName() + "Elevator")
+                    .RuleFor(e => e.Address, (f, u) => f.Address.StreetAddress())
                     .RuleFor(e => e.LastInspection, f => DateTime.Now)
                     .RuleFor(e => e.NextInspection, f => DateTime.Now.AddDays(20))
                     .RuleFor(e => e.Door, (f, u) => false)
                     .RuleFor(e => e.ShutDown, (f, u) => false)
                     .RuleFor(e => e.Reboot, (f, u) => false)
-                    .RuleFor(e => e.Floor, (f, u) => f.Random.Number())
-                    .RuleFor(e => e.MaximumWeight, (f, u) => f.Random.Number().ToString());
-
-
-
-
-                elevator = testelevator.Generate(1).First();
+                    .RuleFor(e => e.Floor, (f, u) => f.Random.Number(10))
+                    .RuleFor(e => e.MaximumWeight, (f, u) => f.Random.Number(750).ToString());
+            elevator = testelevator.Generate(1).First();
                 return elevator;
         }
         private Case GenerateCases()
@@ -115,7 +111,7 @@ namespace AgileWebApi.Data
         {
             var n = random.Next(0, 10);
             Technician technician = null;
-            if (n < 5)
+            if (n <= 5)
             {
                 var testUser = new Faker<Technician>()
                     .StrictMode(false)
