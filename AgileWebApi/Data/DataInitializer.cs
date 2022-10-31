@@ -76,27 +76,17 @@ namespace AgileWebApi.Data
         }
         private Case GenerateCases()
         {
-            var n = random.Next(0, 10);
+            var n = random.Next(0, 5);
+            var r = random.Next(0, 10);
+            var tec = _context.Technicians.FirstOrDefault(a => a.Id == r);
+            var ele = _context.Elevators.FirstOrDefault(a => a.Id == r);
             Case c = null;
             var testCase = new Faker<Case>()
                     .StrictMode(false)
                     .RuleFor(e => e.Id, f => f.IndexFaker)
                     .RuleFor(e => e.Name, (f, u) => f.Person.FirstName)
-                    .RuleFor(e => e.Elevator, (f, u) => new Elevator 
-                    {
-                        Name = "korvevator",
-                        Address = "blabla",
-                        Floor = 1,
-                        LastInspection = DateTime.Now,
-                        NextInspection = DateTime.Now.AddDays(30),
-                        Reboot = false,
-                        Door = false,
-                        ShutDown = false,
-                        MaximumWeight = "1000",
-
-                    })
-                    
-                    .RuleFor(e => e.Technician, (f, u) =>   new Technician(){Name = "KALLE", Role = "SecondLine Techinician"}) 
+                    .RuleFor(e => e.Elevator, ele)                    
+                    .RuleFor(e => e.Technician, tec) 
                     .RuleFor(e => e.Comments, (f, u) => new List<Comment>()
                     {
                         new Comment() { Issue = "blabla" },
