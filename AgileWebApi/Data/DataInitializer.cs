@@ -86,7 +86,7 @@ namespace AgileWebApi.Data
                     .StrictMode(false)
                     .RuleFor(e => e.Id, f => f.IndexFaker)
                     .RuleFor(e => e.Name, (f, u) => f.Person.FirstName)
-                    .RuleFor(e => e.Elevator, (f, u) => new Elevator
+                    .RuleFor(e => e.Elevator, (f, u) => new Elevator 
                     {
                         Name = "korvevator",
                         Address = "blabla",
@@ -99,7 +99,8 @@ namespace AgileWebApi.Data
                         MaximumWeight = "1000",
 
                     })
-                    .RuleFor(e => e.Technician, (f, u) =>  new Technician(){Name = "KALLE", Role = "SecondLine Techinician"})
+                    
+                    .RuleFor(e => e.Technician, (f, u) =>   new Technician(){Name = "KALLE", Role = "SecondLine Techinician"}) 
                     .RuleFor(e => e.Comments, (f, u) => new List<Comment>()
                     {
                         new Comment() { Issue = "blabla" },
