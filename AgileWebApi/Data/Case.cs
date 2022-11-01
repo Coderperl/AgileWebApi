@@ -10,11 +10,8 @@ namespace AgileWebApi.Data
         public Elevator Elevator { get; set; }
         public Technician Technician { get; set; }
         public List<Comment> Comments { get; set; }
-        public enum CaseStatus
-        {
-            Started, 
-            NotStarted,
-            Finished
-        }
+        public string Status { get; set; }
+
     }
+   
 }
