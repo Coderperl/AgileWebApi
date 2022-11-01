@@ -23,7 +23,8 @@ namespace AgileWebApi.Migrations
                     Reboot = table.Column<bool>(type: "bit", nullable: false),
                     ShutDown = table.Column<bool>(type: "bit", nullable: false),
                     Door = table.Column<bool>(type: "bit", nullable: false),
-                    Floor = table.Column<int>(type: "int", nullable: false)
+                    Floor = table.Column<int>(type: "int", nullable: false),
+                    ElevatorStatus = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {

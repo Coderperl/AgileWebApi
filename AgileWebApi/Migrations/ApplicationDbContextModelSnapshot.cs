@@ -90,6 +90,10 @@ namespace AgileWebApi.Migrations
                     b.Property<bool>("Door")
                         .HasColumnType("bit");
 
+                    b.Property<string>("ElevatorStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<int>("Floor")
                         .HasColumnType("int");
 

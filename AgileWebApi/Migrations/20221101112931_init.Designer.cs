@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AgileWebApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221101103738_init")]
+    [Migration("20221101112931_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -91,6 +91,10 @@ namespace AgileWebApi.Migrations
 
                     b.Property<bool>("Door")
                         .HasColumnType("bit");
+
+                    b.Property<string>("ElevatorStatus")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Floor")
                         .HasColumnType("int");

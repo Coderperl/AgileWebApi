@@ -69,16 +69,17 @@ namespace AgileWebApi.Data
                     .RuleFor(e => e.ShutDown, (f, u) => false)
                     .RuleFor(e => e.Reboot, (f, u) => false)
                     .RuleFor(e => e.Floor, (f, u) => f.Random.Number(10))
+                    .RuleFor(e => e.ElevatorStatus, (f, u) => "Active")
                     .RuleFor(e => e.MaximumWeight, (f, u) => f.Random.Number(750).ToString());
             elevator = testelevator.Generate(1).First();
             return elevator;
         }
         private Case GenerateCases()
-        {
-            var n = random.Next(0, 5);
-            var r = random.Next(0, 10);
-            var tec = _context.Technicians.FirstOrDefault(a => a.Id == r);
-            var ele = _context.Elevators.FirstOrDefault(a => a.Id == r);
+        {            
+            var e = random.Next(1, 11);
+            var t = random.Next(1, 11);
+            var tec = _context.Technicians.FirstOrDefault(a => a.Id == t);
+            var ele = _context.Elevators.FirstOrDefault(a => a.Id == e);
             Case c = null;
             var testCase = new Faker<Case>()
                     .StrictMode(false)
