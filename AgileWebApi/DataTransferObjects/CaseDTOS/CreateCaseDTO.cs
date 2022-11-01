@@ -8,11 +8,6 @@ namespace AgileWebApi.DataTransferObjects.CaseDTO
         public int ElevatorId { get; set; }
         public int TechnicianId { get; set; }
         public Comment Comment { get; set; }
-        public enum CaseStatus
-        {
-            Started,
-            NotStarted,
-            Finished
-        }
+        public string Status { get; set; }
     }
 }
