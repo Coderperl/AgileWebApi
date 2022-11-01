@@ -1,6 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
-using System;
-using Bogus;
+﻿using Bogus;
+using Microsoft.EntityFrameworkCore;
 
 namespace AgileWebApi.Data
 {
@@ -72,7 +71,7 @@ namespace AgileWebApi.Data
                     .RuleFor(e => e.Floor, (f, u) => f.Random.Number(10))
                     .RuleFor(e => e.MaximumWeight, (f, u) => f.Random.Number(750).ToString());
             elevator = testelevator.Generate(1).First();
-                return elevator;
+            return elevator;
         }
         private Case GenerateCases()
         {
@@ -84,18 +83,18 @@ namespace AgileWebApi.Data
             var testCase = new Faker<Case>()
                     .StrictMode(false)
                     .RuleFor(e => e.Id, f => f.IndexFaker)
-                    .RuleFor(e => e.Name, (f, u) => f.Person.FirstName)
-                    .RuleFor(e => e.Elevator, ele)                    
-                    .RuleFor(e => e.Technician, tec) 
+                    .RuleFor(e => e.Name, (f, u) => f.Hacker.Phrase())
+                    .RuleFor(e => e.Elevator, ele)
+                    .RuleFor(e => e.Technician, tec)
+                    .RuleFor(e => e.Status, (f, u) => "Not Started")
                     .RuleFor(e => e.Comments, (f, u) => new List<Comment>()
                     {
                         new Comment() { Issue = "blabla" },
-                        new Comment() { Issue = "blabla2"}    
+                        new Comment() { Issue = "blabla2"}
                     });
+            c = testCase.Generate(1).First();
 
-                c = testCase.Generate(1).First();
-
-                return c;
+            return c;
         }
         private Technician GenerateTechnicians()
         {
