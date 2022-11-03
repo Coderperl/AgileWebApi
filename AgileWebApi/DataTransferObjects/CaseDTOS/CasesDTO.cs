@@ -10,5 +10,6 @@ namespace AgileWebApi.DataTransferObjects.CaseDTO
         public ElevatorDTO.ElevatorDTO? Elevator { get; set; }
         public TechnicianDTO? Technician { get; set; }
         public string Status { get; set; }
+        public int CreatedBy { get; set; }
     }
 }

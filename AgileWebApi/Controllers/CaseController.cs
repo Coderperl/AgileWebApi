@@ -45,6 +45,7 @@ namespace AgileWebApi.Controllers
                     Name = c.Technician.Name,
                     Role = c.Technician.Role
                 },
+                CreatedBy = c.CreatedBy,
                 
 
             }).ToList());
@@ -83,7 +84,8 @@ namespace AgileWebApi.Controllers
                     Id = c.Technician.Id,
                     Name = c.Technician.Name,
                     Role = c.Technician.Role
-                },
+                }, 
+                CreatedBy = c.CreatedBy,
             };
             return Ok(caseDTO);
         }
@@ -95,14 +97,13 @@ namespace AgileWebApi.Controllers
             if (elevator == null) return NotFound("ElevatorId was not found.");
             var technician = _context.Technicians.Find(createCaseDTO.TechnicianId);
             if (technician == null) return NotFound("TechnicianId was not found.");
-            //var comment = _context.Comments.Find(createCaseDTO.Comment.Id);
-            //if (comment == null) return NotFound("CommentId was not found.");
             var Case = new Case()
             {
                 Name = createCaseDTO.Name,
                 Elevator = elevator,
                 Technician = technician,
                 Status = createCaseDTO.Status,
+                CreatedBy = createCaseDTO.CreatedBy,
                 Comments = new List<Comment>()
                 {
                     new Comment()
@@ -110,6 +111,7 @@ namespace AgileWebApi.Controllers
                         Issue = createCaseDTO.Comment.Issue
                     }
                 }
+                
             };
             _context.Cases.Add(Case);
             _context.SaveChanges();
@@ -136,7 +138,8 @@ namespace AgileWebApi.Controllers
                     Name = technician.Name,
                     Role = technician.Role
                 },
-                Comments = Case.Comments
+                Comments = Case.Comments, 
+                CreatedBy = Case.CreatedBy
             };
             return CreatedAtAction(nameof(GetOneCase), new {Id = Case.Id}, CaseDTO);
         }
