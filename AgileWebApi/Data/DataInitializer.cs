@@ -77,7 +77,8 @@ namespace AgileWebApi.Data
         private Case GenerateCases()
         {            
             var e = random.Next(1, 11);
-            var t = random.Next(1, 11);
+            var t = random.Next(6, 11);
+            var cb = random.Next(1, 6);
             var tec = _context.Technicians.FirstOrDefault(a => a.Id == t);
             var ele = _context.Elevators.FirstOrDefault(a => a.Id == e);
             Case c = null;
@@ -88,6 +89,7 @@ namespace AgileWebApi.Data
                     .RuleFor(e => e.Elevator, ele)
                     .RuleFor(e => e.Technician, tec)
                     .RuleFor(e => e.Status, (f, u) => "Not Started")
+                    .RuleFor(e => e.CreatedBy, (f, u) => cb)
                     .RuleFor(e => e.Comments, (f, u) => new List<Comment>()
                     {
                         new Comment() { Issue = "blabla" },

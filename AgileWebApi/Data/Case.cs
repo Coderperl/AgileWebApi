@@ -11,7 +11,7 @@ namespace AgileWebApi.Data
         public Technician Technician { get; set; }
         public List<Comment> Comments { get; set; }
         public string Status { get; set; }
-
+        public int CreatedBy { get; set; }
     }
    
 }

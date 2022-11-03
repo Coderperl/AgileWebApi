@@ -54,7 +54,8 @@ namespace AgileWebApi.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ElevatorId = table.Column<int>(type: "int", nullable: false),
                     TechnicianId = table.Column<int>(type: "int", nullable: false),
-                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Status = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    CreatedBy = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
