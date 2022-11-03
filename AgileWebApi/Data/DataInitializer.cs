@@ -75,7 +75,8 @@ namespace AgileWebApi.Data
             return elevator;
         }
         private Case GenerateCases()
-        {            
+        {
+            var ce = random.Next(5, 40);
             var e = random.Next(1, 11);
             var t = random.Next(6, 11);
             var cb = random.Next(1, 6);
@@ -88,8 +89,11 @@ namespace AgileWebApi.Data
                     .RuleFor(e => e.Name, (f, u) => f.Hacker.Phrase())
                     .RuleFor(e => e.Elevator, ele)
                     .RuleFor(e => e.Technician, tec)
+                    .RuleFor(e => e.CaseCreated, f => DateTime.Now)
+                    .RuleFor(e => e.CaseEnded, f => DateTime.Now.AddDays(ce))
                     .RuleFor(e => e.Status, (f, u) => "Not Started")
                     .RuleFor(e => e.CreatedBy, (f, u) => cb)
+
                     .RuleFor(e => e.Comments, (f, u) => new List<Comment>()
                     {
                         new Comment() { Issue = "blabla" },

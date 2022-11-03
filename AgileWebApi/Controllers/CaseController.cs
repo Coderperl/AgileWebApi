@@ -27,6 +27,8 @@ namespace AgileWebApi.Controllers
                 Id = c.Id,
                 Name = c.Name,
                 Status = c.Status,
+                CaseCreated = c.CaseCreated,
+                CaseEnded = c.CaseEnded,
                 Elevator = new ElevatorDTO()
                 {
                     Id = c.Elevator.Id,
@@ -67,6 +69,8 @@ namespace AgileWebApi.Controllers
                 Name = c.Name,
                 Comments = c.Comments,
                 Status = c.Status,
+                CaseCreated = c.CaseCreated,
+                CaseEnded = c.CaseEnded,
                 Elevator = new ElevatorDTO()
                 {
                     Id = c.Elevator.Id,
@@ -104,6 +108,8 @@ namespace AgileWebApi.Controllers
                 Technician = technician,
                 Status = createCaseDTO.Status,
                 CreatedBy = createCaseDTO.CreatedBy,
+                CaseCreated = createCaseDTO.CaseCreated,
+                CaseEnded = createCaseDTO.CaseEnded,
                 Comments = new List<Comment>()
                 {
                     new Comment()
@@ -120,6 +126,8 @@ namespace AgileWebApi.Controllers
                 Id = Case.Id,
                 Name = Case.Name,
                 Status = Case.Status,
+                CaseCreated = Case.CaseCreated,
+                CaseEnded = Case.CaseEnded,
                 Elevator = new ElevatorDTO()
                 {
                     Id = elevator.Id,
@@ -158,6 +166,7 @@ namespace AgileWebApi.Controllers
             Case.Technician = tech;
             Case.Comments.Where(c => c.Id == caseDto.Comment.Id).ToList().ForEach(i => i.Issue = caseDto.Comment.Issue);
             Case.Status = caseDto.Status;
+            Case.CaseEnded = caseDto.CaseEnded;
             _context.SaveChanges();
             return NoContent();
         }
