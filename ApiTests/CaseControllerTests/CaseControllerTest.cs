@@ -29,6 +29,7 @@ namespace ApiTests.CaseControllerTests
         [Fact]
         public void GetAllCases_When_Called_ReturnOkResult()
         {
+            _context.Database.EnsureDeleted();
             //Arrange
             var testCase = new Case()
             {
@@ -72,10 +73,11 @@ namespace ApiTests.CaseControllerTests
         [Fact]
         public void GetAll_When_Called_returns_All_Cases()
         {
+            _context.Database.EnsureDeleted();
             //Arrange
             var testCase = new Case()
             {
-                Id = 1,
+                Id = 2,
                 Name = "TestCase",
                 CaseCreated = DateTime.Now,
                 CaseEnded = DateTime.Now.AddDays(10),
@@ -127,6 +129,7 @@ namespace ApiTests.CaseControllerTests
         [Fact]
         public void GetOneCase_WithExistingId_ReturnsOkResult()
         {
+            _context.Database.EnsureDeleted();
             //Arrange
             var testCase = new Case()
             {
@@ -170,6 +173,7 @@ namespace ApiTests.CaseControllerTests
         [Fact]
         public void CreateCase_InvalidObjectSent_NotFoundResult()
         {
+            _context.Database.EnsureDeleted();
             //Arrange
             var testCase = new CreateCaseDTO()
             {
@@ -191,6 +195,7 @@ namespace ApiTests.CaseControllerTests
         [Fact]
         public void CreateCase_ValidObjectSent_ReturnsCreatedResponse()
         {
+            _context.Database.EnsureDeleted();
             //Arrange
             var testCase = new Case()
             {
@@ -247,6 +252,7 @@ namespace ApiTests.CaseControllerTests
         [Fact]
         public void EditCase_ValidObjectSent_ReturnsNoContent()
         {
+            _context.Database.EnsureDeleted();
             //Arrange
             var testCase = new Case()
             {
@@ -299,6 +305,7 @@ namespace ApiTests.CaseControllerTests
         [Fact]
         public void EditCase_InValidObjectSent_ReturnsBadRequest()
         {
+            _context.Database.EnsureDeleted();
             //Arrange
             var testCase = new Case()
             {
