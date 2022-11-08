@@ -162,6 +162,10 @@ namespace AgileWebApi.Controllers
                 .Include(c => c.Comments)
                 .FirstOrDefault(c => c.Id == Id);
             var tech = _context.Technicians.FirstOrDefault(x => x.Id == caseDto.TechnicianId);
+            if (Case == null)
+            {
+                return BadRequest();
+            }
             Case.Status = caseDto.Status;
             Case.Technician = tech;
             Case.Comments.Where(c => c.Id == caseDto.Comment.Id).ToList().ForEach(i => i.Issue = caseDto.Comment.Issue);
