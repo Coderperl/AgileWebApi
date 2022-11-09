@@ -169,7 +169,6 @@ namespace AgileWebApi.Controllers
             Case.Status = caseDto.Status;
             Case.Technician = tech;
             Case.Comments.Where(c => c.Id == caseDto.Comment.Id).ToList().ForEach(i => i.Issue = caseDto.Comment.Issue);
-            Case.Status = caseDto.Status;
             Case.CaseEnded = caseDto.CaseEnded;
             _context.SaveChanges();
             return NoContent();
