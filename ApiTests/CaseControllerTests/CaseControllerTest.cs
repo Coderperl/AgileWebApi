@@ -292,10 +292,8 @@ namespace ApiTests.CaseControllerTests
                 CaseEnded = DateTime.Now.AddDays(10),
                 TechnicianId = 1,
                 Status = "TestStatus",
-                Comment = new Comment()
-                {
-                    Issue = "TestComment"
-                },
+                Comment = "TestComment"
+                
             };
             //Act
             var updateCase = _sut.UpdateCase(testCase2, 1);
@@ -345,10 +343,8 @@ namespace ApiTests.CaseControllerTests
                 CaseEnded = DateTime.Now.AddDays(10),
                 TechnicianId = 1,
                 Status = "TestStatus",
-                Comment = new Comment()
-                {
-                    Issue = "TestComment"
-                },
+                Comment = "TestComment"
+                
             };
             //Act
             var updateCase = _sut.UpdateCase(testCase2, 10);
