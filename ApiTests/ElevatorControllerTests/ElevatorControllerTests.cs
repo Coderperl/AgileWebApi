@@ -19,7 +19,7 @@ namespace ApiTests.ElevatorControllerTests
 		public ElevatorControllerTests()
 		{
 			var contextOptions = new DbContextOptionsBuilder<ApplicationDbContext>()
-				.UseInMemoryDatabase("test")
+				.UseInMemoryDatabase("test2")
 				.Options;
 			_context = new ApplicationDbContext(contextOptions);
 			_context.Database.EnsureCreated();
@@ -46,7 +46,7 @@ namespace ApiTests.ElevatorControllerTests
 				Floor = 3,
 				ElevatorStatus = "Active"
 			};
-			_context.Add(elevator);
+			_context.Elevators.Add(elevator);
 			_context.SaveChanges();
 
 			//Act
@@ -77,7 +77,7 @@ namespace ApiTests.ElevatorControllerTests
 				Floor = 3,
 				ElevatorStatus = "Active"
 			};
-			_context.Add(elevator);
+			_context.Elevators.Add(elevator);
 			_context.SaveChanges();
 
 			//Act
@@ -124,7 +124,7 @@ namespace ApiTests.ElevatorControllerTests
 				ElevatorStatus = "Active"
 			};
 
-			_context.Add(elevator);
+			_context.Elevators.Add(elevator);
 			_context.SaveChanges();
 
 			var updatedElevator = new UpdateElevatorDTO()
@@ -173,7 +173,7 @@ namespace ApiTests.ElevatorControllerTests
 				ElevatorStatus = "Active"
 			};
 
-			_context.Add(elevator);
+			_context.Elevators.Add(elevator);
 			_context.SaveChanges();
 
 			var updatedElevator = new UpdateElevatorDTO()
