@@ -13,7 +13,7 @@ namespace ApiTests.TechnicianControllerTest
         public TechnicianControllerTest()
         {
             var contextOptions = new DbContextOptionsBuilder<ApplicationDbContext>()
-                .UseInMemoryDatabase("test")
+                .UseInMemoryDatabase("test3")
                 .Options;
             _context = new ApplicationDbContext(contextOptions);
             _context.Database.EnsureCreated();
