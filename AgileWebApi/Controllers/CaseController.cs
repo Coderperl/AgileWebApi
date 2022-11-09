@@ -168,6 +168,8 @@ namespace AgileWebApi.Controllers
             }
             
             Case.Technician = tech;
+
+
             Case.Comments.Add(new Comment() { Issue = caseDto.Comment });
             Case.Status = caseDto.Status;
             Case.CaseEnded = caseDto.CaseEnded;
