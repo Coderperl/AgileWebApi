@@ -15,6 +15,17 @@ namespace AgileWebApi.Controllers
             _context = context;
         }
         //HTTP RESPONSES
+        [HttpGet]
+        public IActionResult GetAllTechnicians()
+        {
+            return Ok(_context.Technicians.Select(technician => new TechniciansDTO()
+            {
+                Name = technician.Name,
+                Id = technician.Id,
+                Role = technician.Role
+            }).ToList());
+        }
+
         [HttpGet  ]
         [Route("{id}")]
         public IActionResult GetOneTechnician(int id)
@@ -30,17 +41,6 @@ namespace AgileWebApi.Controllers
             };
 
             return Ok(result);
-        }
-
-        [HttpGet]
-        public IActionResult GetAllTechnicians()
-        {
-            return Ok(_context.Technicians.Select(technician => new TechniciansDTO()
-            {
-                Name = technician.Name,
-                Id = technician.Id,
-                Role = technician.Role
-            }).ToList());
         }
     }
 }
