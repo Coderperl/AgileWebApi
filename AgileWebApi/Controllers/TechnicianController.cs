@@ -42,6 +42,5 @@ namespace AgileWebApi.Controllers
                 Role = technician.Role
             }).ToList());
         }
-
     }
 }
