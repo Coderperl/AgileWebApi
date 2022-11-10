@@ -61,7 +61,7 @@ namespace AgileWebApi.Data
             var testelevator = new Faker<Elevator>()
                     .StrictMode(false)
                     .RuleFor(e => e.Id, f => f.IndexFaker)
-                    .RuleFor(e => e.Name, (f, u) => f.Company.CompanyName() + "Elevator")
+                    .RuleFor(e => e.Name, (f, u) => f.Company.CompanyName() + " Elevator")
                     .RuleFor(e => e.Address, (f, u) => f.Address.StreetAddress())
                     .RuleFor(e => e.LastInspection, f => DateTime.Now)
                     .RuleFor(e => e.NextInspection, f => DateTime.Now.AddDays(20))
@@ -96,7 +96,7 @@ namespace AgileWebApi.Data
 
                     .RuleFor(e => e.Comments, (f, u) => new List<Comment>()
                     {
-                        new Comment() { Issue = $"Case Created By {tec.Name} Elevator door needs service."  },
+                        new Comment() { Issue = $"Case Created By {tec.Name} Elevator door needs service."},
                         new Comment() { Issue = "Service needed."}
                     });
             c = testCase.Generate(1).First();
