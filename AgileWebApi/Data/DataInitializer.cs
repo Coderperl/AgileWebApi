@@ -93,10 +93,9 @@ namespace AgileWebApi.Data
                     .RuleFor(e => e.CaseEnded, f => DateTime.Now.AddDays(ce))
                     .RuleFor(e => e.Status, (f, u) => "Not Started")
                     .RuleFor(e => e.CreatedBy, (f, u) => cb)
-
                     .RuleFor(e => e.Comments, (f, u) => new List<Comment>()
                     {
-                        new Comment() { Issue = $"Case Created By {tec.Name} Elevator door needs service."},
+                        new Comment() { Issue = $"Elevator door needs service. Case Created By {tec.Name}"},
                         new Comment() { Issue = "Service needed."}
                     });
             c = testCase.Generate(1).First();
@@ -115,7 +114,6 @@ namespace AgileWebApi.Data
                     .RuleFor(e => e.Name, (f, u) => f.Person.FirstName)
                     .RuleFor(e => e.Role, (f, u) => "SecondLine Technician");
 
-
                 technician = testUser.Generate(1).First();
             }
             else if (n > 5)
@@ -125,7 +123,6 @@ namespace AgileWebApi.Data
                     .RuleFor(e => e.Id, f => f.IndexFaker)
                     .RuleFor(e => e.Name, (f, u) => f.Person.FirstName)
                     .RuleFor(e => e.Role, (f, u) => "Field Technician");
-
 
                 technician = testUser.Generate(1).First();
             }
