@@ -96,8 +96,8 @@ namespace AgileWebApi.Data
 
                     .RuleFor(e => e.Comments, (f, u) => new List<Comment>()
                     {
-                        new Comment() { Issue = "blabla" },
-                        new Comment() { Issue = "blabla2"}
+                        new Comment() { Issue = $"Case Created By {tec.Name} Elevator door needs service."  },
+                        new Comment() { Issue = "Service needed."}
                     });
             c = testCase.Generate(1).First();
 
