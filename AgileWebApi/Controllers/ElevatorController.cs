@@ -42,23 +42,27 @@ namespace AgileWebApi.Controllers
             return Ok(elevators);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet]
+        [Route("{id}")]
         public ActionResult GetById(int id)
         {
-            var elevator = _context.Elevators.Select(a => new ElevatorDTO
+            var elevator = _context.Elevators.FirstOrDefault(a => a.Id == id); 
+            if(elevator == null) return NotFound();
+            
+            var elevatorDTo = new ElevatorDTO()
             {
-                Id = a.Id,
-                Name = a.Name,
-                Address = a.Address,
-                MaximumWeight = a.MaximumWeight,
-                LastInspection = a.LastInspection,
-                NextInspection = a.NextInspection,
-                Reboot = a.Reboot,
-                ShutDown = a.ShutDown,
-                Door = a.Door,
-                Floor = a.Floor,
-                ElevatorStatus = a.ElevatorStatus
-            }).FirstOrDefault(a => a.Id == id);
+                Id = elevator.Id,
+                Name = elevator.Name,
+                Address = elevator.Address,
+                MaximumWeight = elevator.MaximumWeight,
+                LastInspection = elevator.LastInspection,
+                NextInspection = elevator.NextInspection,
+                Reboot = elevator.Reboot,
+                ShutDown = elevator.ShutDown,
+                Door = elevator.Door,
+                Floor = elevator.Floor,
+                ElevatorStatus = elevator.ElevatorStatus
+            };
 
             return Ok(elevator);
         }
@@ -68,6 +72,7 @@ namespace AgileWebApi.Controllers
         public IActionResult UpdateElevator(UpdateElevatorDTO elevatorDto, int Id)
         {
             var elevator = _context.Elevators.FirstOrDefault(a => a.Id == Id);
+            if(elevator ==null) return BadRequest();
 
             elevator.Address = elevatorDto.Address;
             elevator.MaximumWeight = elevatorDto.MaximumWeight;
