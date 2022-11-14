@@ -3,6 +3,7 @@ using AgileWebApi.Data;
 using AgileWebApi.DataTransferObjects.ElevatorDTO;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,6 +16,7 @@ namespace ApiTests.ElevatorControllerTests
 	{
 		private readonly ElevatorController _sut;
 		private readonly ApplicationDbContext _context;
+		private readonly IConfiguration _configuration;
 
 		public ElevatorControllerTests()
 		{
@@ -23,7 +25,7 @@ namespace ApiTests.ElevatorControllerTests
 				.Options;
 			_context = new ApplicationDbContext(contextOptions);
 			_context.Database.EnsureCreated();
-			_sut = new ElevatorController(_context);
+			_sut = new ElevatorController(_context, _configuration);
 		}
 
 		[Fact]
