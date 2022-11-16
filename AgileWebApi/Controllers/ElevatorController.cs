@@ -77,7 +77,7 @@ namespace AgileWebApi.Controllers
             elevator.Address = elevatorDto.Address;
             elevator.MaximumWeight = elevatorDto.MaximumWeight;
             elevator.Reboot = elevatorDto.Reboot;
-            elevator.ShutDown = elevator.ShutDown;
+            elevator.ShutDown = elevatorDto.ShutDown;
             elevator.Door = elevatorDto.Door;
             elevator.Floor = elevatorDto.Floor;
             elevator.LastInspection = elevatorDto.LastInspection;
