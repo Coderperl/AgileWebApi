@@ -36,7 +36,7 @@ namespace AgileWebApi.Data
 
         private void SeedElevators()
         {
-            while (_context.Elevators.Count() < 10)
+            while (_context.Elevators.Count() < 20)
             {
                 var elevator =
                     GenerateElevators();
@@ -56,22 +56,66 @@ namespace AgileWebApi.Data
         }
         private Elevator GenerateElevators()
         {
-            var n = random.Next(0, 10);
+            var n = random.Next(0, 20);
             Elevator elevator = null;
-            var testelevator = new Faker<Elevator>()
-                    .StrictMode(false)
-                    .RuleFor(e => e.Id, f => f.IndexFaker)
-                    .RuleFor(e => e.Name, (f, u) => f.Company.CompanyName() + " Elevator")
-                    .RuleFor(e => e.Address, (f, u) => f.Address.StreetAddress())
-                    .RuleFor(e => e.LastInspection, f => DateTime.Now)
-                    .RuleFor(e => e.NextInspection, f => DateTime.Now.AddDays(20))
-                    .RuleFor(e => e.Door, (f, u) => false)
-                    .RuleFor(e => e.ShutDown, (f, u) => false)
-                    .RuleFor(e => e.Reboot, (f, u) => false)
-                    .RuleFor(e => e.Floor, (f, u) => f.Random.Number(10))
-                    .RuleFor(e => e.ElevatorStatus, (f, u) => "Active")
-                    .RuleFor(e => e.MaximumWeight, (f, u) => f.Random.Number(750).ToString());
-            elevator = testelevator.Generate(1).First();
+            if (n <= 5)
+            {
+                var testelevator = new Faker<Elevator>()
+                        .StrictMode(false)
+                        .RuleFor(e => e.Id, f => f.IndexFaker)
+                        .RuleFor(e => e.Name, (f, u) => f.Company.CompanyName() + " Elevator")
+                        .RuleFor(e => e.Address, (f, u) => f.Address.StreetAddress())
+                        .RuleFor(e => e.LastInspection, f => DateTime.Now)
+                        .RuleFor(e => e.NextInspection, f => DateTime.Now.AddDays(20))
+                        .RuleFor(e => e.Door, (f, u) => false)
+                        .RuleFor(e => e.ShutDown, (f, u) => false)
+                        .RuleFor(e => e.Reboot, (f, u) => false)
+                        .RuleFor(e => e.Floor, (f, u) => f.Random.Number(1,5))
+                        .RuleFor(e => e.MaxFloor, (f, u) => 5)
+                        .RuleFor(e => e.MinFloor, (f, u) => 1)
+                        .RuleFor(e => e.ElevatorStatus, (f, u) => "Active")
+                        .RuleFor(e => e.MaximumWeight, (f, u) => f.Random.Number(750).ToString())
+                        .RuleFor(e => e.ElevatorType, (f, u) => "Low floor");
+                elevator = testelevator.Generate(1).First();
+            } else if(n > 5 && n <= 10)
+            {
+                var testelevator = new Faker<Elevator>()
+                        .StrictMode(false)
+                        .RuleFor(e => e.Id, f => f.IndexFaker)
+                        .RuleFor(e => e.Name, (f, u) => f.Company.CompanyName() + " Elevator")
+                        .RuleFor(e => e.Address, (f, u) => f.Address.StreetAddress())
+                        .RuleFor(e => e.LastInspection, f => DateTime.Now)
+                        .RuleFor(e => e.NextInspection, f => DateTime.Now.AddDays(20))
+                        .RuleFor(e => e.Door, (f, u) => false)
+                        .RuleFor(e => e.ShutDown, (f, u) => false)
+                        .RuleFor(e => e.Reboot, (f, u) => false)
+                        .RuleFor(e => e.Floor, (f, u) => f.Random.Number(5,10))
+                        .RuleFor(e => e.MaxFloor, (f, u) => 10)
+                        .RuleFor(e => e.MinFloor, (f, u) => 5)
+                        .RuleFor(e => e.ElevatorStatus, (f, u) => "Active")
+                        .RuleFor(e => e.MaximumWeight, (f, u) => f.Random.Number(750).ToString())
+                        .RuleFor(e => e.ElevatorType, (f, u) => "Medium floor");
+                elevator = testelevator.Generate(1).First();
+            } else if(n > 10 && n <= 20)
+            {
+                var testelevator = new Faker<Elevator>()
+                        .StrictMode(false)
+                        .RuleFor(e => e.Id, f => f.IndexFaker)
+                        .RuleFor(e => e.Name, (f, u) => f.Company.CompanyName() + " Elevator")
+                        .RuleFor(e => e.Address, (f, u) => f.Address.StreetAddress())
+                        .RuleFor(e => e.LastInspection, f => DateTime.Now)
+                        .RuleFor(e => e.NextInspection, f => DateTime.Now.AddDays(20))
+                        .RuleFor(e => e.Door, (f, u) => false)
+                        .RuleFor(e => e.ShutDown, (f, u) => false)
+                        .RuleFor(e => e.Reboot, (f, u) => false)
+                        .RuleFor(e => e.Floor, (f, u) => f.Random.Number(10, 20))
+                        .RuleFor(e => e.MaxFloor, (f, u) => 20)
+                        .RuleFor(e => e.MinFloor, (f, u) => 10)
+                        .RuleFor(e => e.ElevatorStatus, (f, u) => "Active")
+                        .RuleFor(e => e.MaximumWeight, (f, u) => f.Random.Number(750).ToString())
+                        .RuleFor(e => e.ElevatorType, (f, u) => "High floor");
+                elevator = testelevator.Generate(1).First();
+            }
             return elevator;
         }
         private Case GenerateCases()
