@@ -36,6 +36,9 @@ namespace AgileWebApi.Controllers
                 ShutDown = a.ShutDown,
                 Door = a.Door,
                 Floor = a.Floor,
+                MaxFloor = a.MaxFloor,
+                MinFloor = a.MinFloor,
+                ElevatorType = a.ElevatorType,
                 ElevatorStatus = a.ElevatorStatus
             });
 
@@ -61,6 +64,9 @@ namespace AgileWebApi.Controllers
                 ShutDown = elevator.ShutDown,
                 Door = elevator.Door,
                 Floor = elevator.Floor,
+                MaxFloor = elevator.MaxFloor,
+                MinFloor = elevator.MinFloor,
+                ElevatorType = elevator.ElevatorType,
                 ElevatorStatus = elevator.ElevatorStatus
             };
 
@@ -83,6 +89,9 @@ namespace AgileWebApi.Controllers
             elevator.LastInspection = elevatorDto.LastInspection;
             elevator.NextInspection = elevatorDto.NextInspection;
             elevator.Name = elevatorDto.Name;
+            elevator.MaxFloor = elevatorDto.MaxFloor;
+            elevator.MinFloor = elevatorDto.MinFloor;
+            elevator.ElevatorType = elevatorDto.ElevatorType;
             elevator.ElevatorStatus = elevatorDto.ElevatorStatus;
             _context.SaveChanges();
             return NoContent();
