@@ -43,7 +43,11 @@ namespace ApiTests.CaseControllerTests
                     Name = "TestElevator",
                     Address = "test",
                     ElevatorStatus = "test",
-                    MaximumWeight = "test"
+                    MaximumWeight = "test",
+                    ElevatorType = "bla",
+                    MinFloor = 1,
+                    MaxFloor = 10,
+
                 },
                 Technician = new Technician()
                 {
@@ -87,7 +91,10 @@ namespace ApiTests.CaseControllerTests
                     Name = "TestElevator",
                     Address = "test",
                     ElevatorStatus = "test",
-                    MaximumWeight = "test"
+                    MaximumWeight = "test",
+                    ElevatorType = "bla",
+                    MinFloor = 1,
+                    MaxFloor = 10,
                 },
                 Technician = new Technician()
                 {
@@ -143,7 +150,10 @@ namespace ApiTests.CaseControllerTests
                     Name = "TestElevator",
                     Address = "test",
                     ElevatorStatus = "test",
-                    MaximumWeight = "test"
+                    MaximumWeight = "test",
+                    ElevatorType = "bla",
+                    MinFloor = 1,
+                    MaxFloor = 10,
                 },
                 Technician = new Technician()
                 {
@@ -209,7 +219,10 @@ namespace ApiTests.CaseControllerTests
                     Name = "TestElevator",
                     Address = "test",
                     ElevatorStatus = "test",
-                    MaximumWeight = "test"
+                    MaximumWeight = "test",
+                    ElevatorType = "bla",
+                    MinFloor = 1,
+                    MaxFloor = 10,
                 },
                 Technician = new Technician()
                 {
@@ -266,7 +279,10 @@ namespace ApiTests.CaseControllerTests
                     Name = "TestElevator",
                     Address = "test",
                     ElevatorStatus = "test",
-                    MaximumWeight = "test"
+                    MaximumWeight = "test",
+                    ElevatorType = "bla",
+                    MinFloor = 1,
+                    MaxFloor = 10,
                 },
                 Technician = new Technician()
                 {
@@ -317,7 +333,10 @@ namespace ApiTests.CaseControllerTests
                     Name = "TestElevator",
                     Address = "test",
                     ElevatorStatus = "test",
-                    MaximumWeight = "test"
+                    MaximumWeight = "test",
+                    ElevatorType = "bla",
+                    MinFloor = 1,
+                    MaxFloor = 10,
                 },
                 Technician = new Technician()
                 {
