@@ -16,7 +16,7 @@ namespace AgileWebApi.Controllers
         }
 
         [HttpPost]
-        [Route("login")]
+        //[Route("login")]
         public IActionResult Login([FromBody] LoginDTO userLogin)
         {
             var user = Authenticate(userLogin);
