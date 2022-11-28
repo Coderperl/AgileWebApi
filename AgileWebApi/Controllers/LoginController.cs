@@ -16,14 +16,13 @@ namespace AgileWebApi.Controllers
         }
 
         [HttpPost]
-        //[Route("login")]
-        public IActionResult Login([FromBody] LoginDTO userLogin)
+        public IActionResult Login(LoginDTO userLogin)
         {
             var user = Authenticate(userLogin);
 
             if (user != null)
             {
-                return Ok(user);
+                return Ok(new {id = user.Id, userName = user.UserName});
             }
 
             return NotFound("Username or password is incorrect");
@@ -31,7 +30,7 @@ namespace AgileWebApi.Controllers
 
         private IdentityUser Authenticate(LoginDTO userLogin)
         {
-            var currentUser = _userManager.FindByEmailAsync(userLogin.Username).Result;
+            var currentUser = _userManager.FindByEmailAsync(userLogin.Username + "@otis.com").Result;
 
             if (currentUser == null) return null;
             // var currentUser = Users.UserLogins.FirstOrDefault(u =>
